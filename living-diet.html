@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Living Diet - Nature's Place</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #2d3e2c;
+            line-height: 1.6;
+            background: #f8f8f5;
+        }
+        
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-simple {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            color: #2d3e2c;
+            text-decoration: none;
+        }
+        
+        .logo-leaf {
+            color: #7ba05b;
+            margin-right: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-size: 0.85rem;
+            color: #2d3e2c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #7ba05b;
+        }
+        
+        /* Hero Section with Image */
+        .hero-image-section {
+            margin-top: 80px;
+            position: relative;
+            height: 50vh;
+            overflow: hidden;
+        }
+        
+        .hero-image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Quote Section */
+        .quote-banner {
+            background: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .quote-banner p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #2d3e2c;
+        }
+        
+        .quote-author {
+            font-family: 'Lato', sans-serif;
+            font-style: normal;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Main Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #7ba05b;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: #2d3e2c;
+        }
+        
+        .content-text {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: #3a3a3a;
+            margin-bottom: 1.5rem;
+        }
+        
+        .content-text strong {
+            color: #2d3e2c;
+            font-weight: 600;
+        }
+        
+        .highlight-green {
+            color: #7ba05b;
+            font-style: italic;
+        }
+        
+        /* Two Column Layout */
+        .two-column-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            align-items: center;
+        }
+        
+        .column-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .column-text {
+            font-size: 0.9rem;
+            line-height: 1.9;
+            color: #3a3a3a;
+        }
+        
+        .column-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .column-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2d3e2c;
+        }
+        
+        .column-text em {
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+        
+        /* Side Headers */
+        .side-headers {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-style: italic;
+            color: #7ba05b;
+        }
+        
+        /* Image Right Section */
+        .image-right-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        /* Footer */
+        .footer-simple {
+            background: #2d3e2c;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            gap: 3rem;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+        
+        .footer-section p {
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column-section,
+            .image-right-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-content">
+            <a href="index.html" class="logo-simple">
+                <span class="logo-leaf">🍃</span>Nature's Place
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="living-diet.html">A Living Diet</a></li>
+                <li><a href="#">The Plans & Tips</a></li>
+                <li><a href="#">Nutritional Advice</a></li>
+                <li><a href="#">Books and Courses</a></li>
+                <li><a href="#">About US</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Image -->
+    <section class="hero-image-section">
+        <img src="IMG_3067.jpeg" alt="Harvest Storage">
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-banner">
+        <p>
+            We cannot properly hold the vibrations of the Universe and will become out of sync with it if we do not have enough Earth within us, and we are almost all mineral and nutrient deficient.<br>
+            <span class="quote-author">Dr. M. Puls</span>
+        </p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section" style="background: white;">
+        <p class="content-text" style="text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; margin-bottom: 2rem;">
+            One of the main ways we commune with Nature is through our food.<br>
+            Through our daily nutriment we make sacred and honor our body temple.
+        </p>
+        
+        <h2 class="section-title">A Living Diet</h2>
+        <p class="section-subtitle">Verified by Nature, Our Past, and Research</p>
+        
+        <p class="content-text">
+            We are re-recognizing once again that our health and well-being is not only based on what food we consume, but includes having a healthy mindset, within a healthy lifestyle and environment; and that to realign ourselves with the natural world and it's cycles can lead to sustainable good health into a great age.
+        </p>
+        
+        <p class="content-text">
+            At the foundation of health, and the root of most disease is the soil-food web/gut-body connection, our connection with the Earth. The microbes that are in the soil, are in us and on us, even within our cells (our mitochondria are not even us, but are a cyanobacteria - one of the first microbes on earth, still alive within our bodies as microbes (90% of our matter), and we function best if we eat for them. It is this inner-connected relationship that helps us digest our food, regulate our immune systems, produce many nutrients, receptivity, and so much more... Including their influence over our microbiome (all of those favorite food, and the more variety that is consumed, the more abundant and varied are the microbes, and the less diseases are experienced.
+        </p>
+        
+        <p class="content-text">
+            We are all individuals and utilize the nutrients we consume in different ways depending on our past traumas, genetics, environment/toxic load, epigenetics (our "terrain" - our mindset, lifestyle and habits; all of which our food is, etc. As a consequence, we all experience different health challenges, disease states, and have different strengths and gifts despite our similarities and circumstances. How we act and ultimate cure is fundamentally largely depends on how we identify the root of life's challenge and drinking our remedies very individualized, and personal, however one consist, is that all remedies work better if a basic, chemical free, nutrient dense, whole food diet is consumed and healthy lifestyle choices made. <span class="highlight-green">A living Diet</span>
+        </p>
+        
+        <p class="content-text">
+            To find out what exactly <span class="highlight-green">A living Diet</span> consists of, it is simple really, one just has to go outside feeling a little hungry, walk about and use their senses to harvest, and in abundance all around you. What you find will be very personal, common food items to what is fresh, and until recently; found most abundant in nature are always a huge variety plants - dark leafy greens/vegetables and mushrooms in season, while we were looking at roots and honey, we were munching on something edible. There are seasonal fruits, nuts/berries (grains), fruit, legumes, are fewer in season, so are eaten less often. Nuts & seeds (grains), fruit, legumes, are fewer in season, so are eaten less often; and so are less often. Large game animals - "red meat" - eat only a few times a week, or more in some climates and seasons; meat- are difficult and time-consuming to obtain, so are eaten less often, and the kill more planned, ritualized, and the animal revered in the past, and present, all over the Earth.
+        </p>
+        
+        <p class="content-text">
+            It is important to realize that our natural world can no longer withstand everyone eating only wild foods, we have lost that right; but we can mimic this diet by growing the best you can method of harvesting foods. This is done, in part, by sometimes endangered, and/or by rights still belonging to the Aboriginal populations of countries.
+        </p>
+        
+        <p class="content-text">
+            <strong>IF PLANNING ON FORAGING, KNOW YOUR WILD FOOD AND REGION — ESPECIALLY YOUR TOXIC PLANTS AND POISONOUS MUSHROOMS. IF PLANNING, OR NEEDING TO TRY IT OUT LIKE OUR ANCESTORS DID, PLEASE START WITH SMALL AMOUNTS AND CARRY CHARCOAL/CLAY AND WATER TO CONSUME IF AN ILL EFFECT IS FELT.</strong>
+        </p>
+        
+        <p class="content-text">
+            Here on our Home Farm we have designed our food system with <span class="highlight-green">A living Diet</span> in mind. We eat in season, fill our storage pantries, kitchen, and ultimately our plates and bodies with the largest variety of whole- minimally processed, chemical free, nutrient dense food possible. This is optimal, and it has taken 25 years of dedication and work, but so much is possible now - let us help you on this journey...
+        </p>
+    </section>
+
+    <!-- Our Past Section -->
+    <section class="two-column-section" style="background: #f8f8f5;">
+        <div class="column-image">
+            <img src="IMG_3067.jpeg" alt="Storage Pantry">
+        </div>
+        <div class="column-text">
+            <h3>Our Past, The Foundation</h3>
+            <p>
+                Humans once, and for the longest time lived in sync with the earth's natural rhythms. We slept long nights in cool, dark, quiet environments. We wore natural cloth designed for movement, and the weather, and could breath deep the unpolluted air. We had access to clean water and drank small amounts often as we were busy all day outside under the sun. We lived in community, collecting, hunting, and cultivating the largest variety of foods possible. We ate small, seasonal meals, and had times of famine and feast. We lived in relative harmony with each other, and the Natural world.
+            </p>
+            <p>
+                Children breastfeed for years and childbirth naturally spaced to optimize health and growth, which kept the birth rate and population size manageable, and slowly paced the development of civilization. We lived in multigenerational communities, cultivated crops, and raised animals. But we also traveled distances for food and resources. If we survived childhood, accident, and childbirth, chronic disease was rarer and we often lived long, healthy, cognizant lives well into a great old age.
+            </p>
+            <p>
+                <em>This was lifestyle at the point in history (about 10,000 yrs. ago) that current research is finding that homo-sapiens were at our healthiest.</em>
+            </p>
+        </div>
+    </section>
+
+    <!-- To Begin Section -->
+    <section class="two-column-section" style="background: white;">
+        <div class="column-text">
+            <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; margin-bottom: 2rem;">
+                To Begin... STOP all exposure to toxins and poisons. Clean things up. Eliminate all of the endocrine disrupting chemicals/plastics, and the overly processed rancid foods. Consume less sugar, caffeine, alcohol, and stimulants in your diets. Sorry, I know... but the time has come! At least start the process of giving them up. Imagine a life without them, and slowly take them out of your life bit by bit, allowing your nervous system to adapt.
+            </p>
+            <p>
+                <strong>WATER IS LIFE.</strong> Drink pure water in small amounts (about the size of your cupped hand) often (q.30 min.) throughout the day. Just like we did at the side of a creek, river, lake. This gives the kidneys, and digestive system a break, and allows for deep cellular hydration to occur, and reduces water retention.
+            </p>
+            <p>
+                <strong>STOP</strong> restricting your diet. WE ARE OMNIVORE. In fact, we thrive if we eat the largest variety of biologically diverse, nutritive foods possible. We are all interconnected, even plants are not vegetarian in how they interact with the microbes of the soil to gain nutrients. If you have developed a food sensitivity, or have a problem with a food group, listen to your body and get rid of them for a time. It may be possible to reintroduce them in another way, later on.
+            </p>
+            <p>
+                Truly, if it is edible and you haven't tried it, or eaten it in awhile - get it into your mouth! There is a connection to be made.
+            </p>
+            <p>
+                Learn to live by the Earths rhythms to live and function optimally.
+            </p>
+            <p>
+                <strong>Daily</strong> wake and get some early morning (red-light) sun, exercise in the morning/early afternoon, eat breakfast, eat your biggest meal mid-day, skip dinner or eat a light evening meal, early, and get to bed and sleeping by 10pm is optimal.
+            </p>
+            <p>
+                <strong>Monthly</strong> by learning to feast and fast by the moon cycle (if you are a child, man, or postmenopausal woman). If you are a childbearing age woman, feast and fast by your monthly cycles. There are times in the month that our digestive fire is stronger, and in balance, times that our digestion is slower and consumption needs and energy levels change.
+            </p>
+            <p>
+                <strong>Seasonally</strong> by eating what is ripe and ready each month and learning to eat, store and grow food in the winter months (or in a farmer and food providers that do). Further, sync up your diet and Lifestyle with the natural world, for example, by fasting a Little longer at the end of winters rich and sweet storage foods, and by eating a carnivore diet for a few weeks after a plant and fruit filled summer. Ideally, during hunting or kidding season when this was naturally done.
+            </p>
+            <p>
+                If at all possible, get your hands in the soil in relationship with the plants, and the soil as much as possible. Go pet a goat, ride a horse, milk a cow! At least exercise outside daily to keep your muscles strong, vitamin D levels up, strengthen your immune system, improve your cognition, feelings of well-being; to renew your connection to all.
+            </p>
+        </div>
+        <div class="column-image">
+            <img src="IMG_3067.jpeg" alt="Garden Harvest">
+        </div>
+    </section>
+
+    <!-- Cycling Women / Moon Section -->
+    <section class="image-right-section" style="background: #f0f0ea; position: relative;">
+        <div class="side-headers">
+            <span>Cycling Women</span>
+            <span>Eat by the Moon</span>
+        </div>
+        <div class="column-text" style="padding-right: 4rem;">
+            <h2 class="section-title" style="text-align: left;">A Living Diet</h2>
+            <p class="content-text">
+                Is derived from the largest variety of fresh, natural whole foods. Is minimally processed, cooked, and eaten in such a way as to increase the taste, enjoyment, nutrient absorption, and aids in proper digestion.
+            </p>
+            <p class="content-text">
+                Eat - mostly plants, non-starchy vegetables, mushrooms, and a fruit or two daily. Sea food, fish, poultry, eggs and small game (rabbits etc.) and some occasional raw milk dairy - for extra, easy protein. Less often eat starchy roots, grains, legumes and more often, but fewer in amounts, nuts and seeds (your hand size cupped full). Large game animals - "red meat" - eat only a few times a week, or more in hunting or kidding season and through the cold winter months. <strong>Minimize honey, syrups and sugars - especially the artifical ones.</strong>
+            </p>
+            <p class="content-text" style="font-style: italic;">
+                This recommendation varies person to person depending on the output, habits, and individuality of the person; usually in the amount eaten, rather than a change of ingredients.
+            </p>
+            <p class="content-text">
+                Wild and perennial plants and vegetables have the longest and most reciprocal relationship with the soil-food web, which feeds both us, and the animals we consume. It is this relationship that creates the most nutrient dense and protective foods available. They can be carefully, and ethically wild-crafted, cultivated as perennials in your garden, and are often known as culinary herbs and weeds.
+            </p>
+            <p class="content-text">
+                On going agricultural research is improving the bioavailability and nutrient density of our crops - regenerative, permaculture, and adaptive farming etc. use methods and techniques. For example, creating short stressors for the plants during the growing season, which strengthens and improves their storage capacity, taste, and nutrient levels; or by withholding water just before harvest concentrating the flavors and increasing the amount of antioxidants and phytonutrients available. As well, using other techniques: Like careful seed selection from plants well adapted to their environments to create optimal conditions for strong, resistant crops and great tasting produce. And so much, much more...
+            </p>
+            <p class="content-text" style="margin-top: 2rem;">
+                <strong>IDEALLY, GROW YOUR OWN FOOD OR FIND A FARMER NEAR YOU</strong><br>
+                Please go to: <strong>thecraftsmanshouse.ca</strong> for more home farm info.
+            </p>
+        </div>
+        <div class="column-image">
+            <img src="image4.jpeg" alt="Child in Garden">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-simple">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Call</h4>
+                <p>123-456-7890</p>
+            </div>
+            <div class="footer-section">
+                <h4>Email</h4>
+                <p><a href="mailto:info@mysite.com">info@mysite.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow</h4>
+                <p>Social Links</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature's Place</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================== RESET & BASE ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #2d3e2c;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ==================== NAVIGATION ==================== */
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(245, 245, 240, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 3rem;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #2d3e2c;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #7ba05b;
+        }
+        
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 60px; /* Space for fixed nav */
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.3));
+            z-index: 1;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 1200px;
+            padding: 2rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+        }
+        
+        .logo-text {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 5rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            font-weight: 400;
+            /* Growing animation */
+            opacity: 0;
+            transform: translateY(80px) scale(0.6);
+            animation: growUp 2s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        @keyframes growUp {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* ==================== WELCOME SECTION ==================== */
+        .welcome-section {
+            position: relative;
+            min-height: 100vh;
+            background: #e8e6d9;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .welcome-parallax-bg {
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: 100%;
+            height: 140%;
+            background: #e8e6d9;
+            will-change: transform;
+        }
+        
+        .welcome-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .welcome-image {
+            width: 100%;
+            height: 600px;
+            background: #c0c0c0;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        
+        .welcome-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .welcome-text h2 {
+            font-family: 'Lato', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #2d3e2c;
+            margin-bottom: 2rem;
+        }
+        
+        .welcome-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #4a5a4a;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight {
+            color: #7ba05b;
+            font-weight: 500;
+            font-style: italic;
+        }
+        
+        .welcome-buttons {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        
+        .btn {
+            padding: 0.9rem 2rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-filled {
+            background: #c9b896;
+            color: #2d3e2c;
+            border: none;
+        }
+        
+        .btn-filled:hover {
+            background: #b8a785;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: #2d3e2c;
+            border: 1px solid #2d3e2c;
+        }
+        
+        .btn-outline:hover {
+            background: #2d3e2c;
+            color: white;
+        }
+        
+        /* ==================== IMAGE GRID ==================== */
+        .image-grid-section {
+            padding: 0;
+            background: white;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            width: 100%;
+            max-width: 1400px;
+            padding: 0 8px;
+        }
+        
+        .grid-item {
+            aspect-ratio: 1;
+            background: #d0d0d0;
+            overflow: hidden;
+        }
+        
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+        
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* ==================== QUOTE SECTION ==================== */
+        .quote-section {
+            background: white;
+            padding: 6rem 3rem;
+        }
+        
+        .quote-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .quote-image {
+            width: 100%;
+            height: 400px;
+            background: #d0d0d0;
+        }
+        
+        .quote-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .quote-text {
+            text-align: right;
+        }
+        
+        .quote {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: #2d3e2c;
+            margin-bottom: 1rem;
+        }
+        
+        .quote-author {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            color: #7ba05b;
+            font-style: normal;
+        }
+        
+        /* ==================== LIVING DIET SECTION ==================== */
+        .living-diet-section {
+            position: relative;
+            background: #e8e6d9;
+            padding: 6rem 3rem;
+            overflow: hidden;
+        }
+        
+        .living-diet-parallax-bg {
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: 100%;
+            height: 140%;
+            background: #e8e6d9;
+            will-change: transform;
+        }
+        
+        .living-diet-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .living-diet-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            font-weight: 600;
+            color: #7ba05b;
+            margin-bottom: 3rem;
+        }
+        
+        .living-diet-text {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 2.2;
+            color: #4a5a4a;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        
+        .living-diet-text p {
+            margin-bottom: 1.8rem;
+        }
+        
+        /* ==================== POLLAN QUOTE SECTION ==================== */
+        .pollan-section {
+            position: relative;
+            background: white;
+            padding: 6rem 3rem;
+            overflow: hidden;
+        }
+        
+        .pollan-parallax-bg {
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: 100%;
+            height: 140%;
+            background: white;
+            will-change: transform;
+        }
+        
+        .pollan-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .pollan-image {
+            width: 100%;
+            height: 500px;
+            background: #d0d0d0;
+        }
+        
+        .pollan-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .pollan-text {
+            text-align: center;
+        }
+        
+        .pollan-quote {
+            font-family: 'Lato', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3e2c;
+            margin-bottom: 1rem;
+        }
+        
+        .pollan-author {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            color: #7ba05b;
+        }
+        
+        /* ==================== SYMPTOMS SECTION ==================== */
+        .symptoms-section {
+            background: white;
+            padding: 4rem 3rem 6rem;
+            text-align: center;
+        }
+        
+        .symptoms-text {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+        }
+        
+        .symptoms-title {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.8;
+            color: #2d3e2c;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .symptoms-subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #4a5a4a;
+            margin-top: 2rem;
+        }
+        
+        /* ==================== SERVICES SECTION ==================== */
+        .services-section {
+            background: white;
+            padding: 0 3rem 6rem;
+        }
+        
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+        
+        .service-card {
+            text-align: center;
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 300px;
+            background: #d0d0d0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .service-title {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2d3e2c;
+        }
+        
+        /* ==================== CONTACT SECTION ==================== */
+        .contact-section {
+            background: #e8e6d9;
+            padding: 4rem 3rem 6rem;
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-title {
+            font-family: 'Lato', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #2d3e2c;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+        }
+        
+        .contact-form {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            border: none;
+            border-bottom: 1px solid #999;
+            background: transparent;
+            outline: none;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            justify-self: center;
+            padding: 1rem 3rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            background: #c9b896;
+            color: #2d3e2c;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: #b8a785;
+        }
+        
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: #f5f5f0;
+            padding: 4rem 3rem;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .footer-image {
+            width: 100%;
+            height: 400px;
+            background: #d0d0d0;
+        }
+        
+        .footer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .footer-content {
+            text-align: center;
+        }
+        
+        .footer-text {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 1.8;
+            color: #2d3e2c;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 3rem;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d3e2c;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section p {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            color: #4a5a4a;
+        }
+        
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .welcome-container,
+            .quote-container,
+            .pollan-container,
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .logo-text {
+                font-size: 3rem;
+            }
+            
+            .tagline {
+                font-size: 1.5rem;
+            }
+            
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .living-diet-title {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#living-diet">A Living Diet</a></li>
+            <li><a href="#plate">The Plate & Tips</a></li>
+            <li><a href="#nutritional-advice">Nutritional Advice</a></li>
+            <li><a href="#books">Books and Courses</a></li>
+            <li><a href="#about">About US</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="cucstimelapse.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <div class="hero-content">
+            <p class="hero-subtitle">
+                Nutritional and Lifestyle Advice for the Whole Family, Women & Children Specialized Care<br>
+                Home Farming, Earth Linked Living, And All Things Nature.
+            </p>
+            
+            <div class="logo">
+                <span class="logo-icon">🍃</span>
+                <h1 class="logo-text">Nature's Place</h1>
+                <span class="logo-icon">🌿</span>
+            </div>
+            
+            <p class="tagline">From the Soil, to the Gut, and beyond...</p>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <div class="welcome-parallax-bg"></div>
+        <div class="welcome-container">
+            <div class="welcome-image">
+                <!-- User will replace with their mountain/river image -->
+                <img src="image7.jpeg" alt="Mountain landscape">
+            </div>
+            
+            <div class="welcome-text">
+                <h2>Welcome and Hello. Our aim certainly is not to add to any of the fear and confusion currently trying to inform us as to what is healthy and nutritious. Rather, we hope to remind you of what you already know, and what has been natural for us for a long, long time.</h2>
+                
+                <p>Here you will find everything you need to try out <span class="highlight">A Living Diet</span>. Through videos and recipes you can begin improving your health with simple natural foods that will nourish you and help to replenish your resources. You will learn to replace bad habits and poor food choices with tasty, nourishing, and healthful foods.</p>
+                
+                <p>Rediscover <span class="highlight">A Living Diet</span> and regain your birthright of feeling calm, happy, alert, creative, energized, and strong. By going back to the basics, in a natural way, through whole foods and lifestyle habits adapted to your personal lifestyle and needs. You will finally achieve sustainable health goals, discover more focus, connection, and energy for living. If we are deficient in the basic nutrients for life, we cannot feel well, nor be an energetic receptacle to understand our place and purpose in this life, on this Earth, at this time.</p>
+                
+                <p>Please reach out if you feel you would benefit from more individualized help. I would be honored to share my support, knowledge, and experience with you while you learn to manage your own health, well being, and heal thy self.</p>
+                
+                <div class="welcome-buttons">
+                    <a href="#living-diet" class="btn btn-filled">A Living Diet</a>
+                    <a href="#nutritional-services" class="btn btn-outline">Nutritional Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Grid -->
+    <section class="image-grid-section">
+        <div class="image-grid">
+            <div class="grid-item">
+                <img src="IMG_0166.jpg" alt="Garden">
+            </div>
+            <div class="grid-item">
+                <img src="IMG_3939.jpeg" alt="Flowers">
+            </div>
+            <div class="grid-item">
+                <img src="QJFN8523.jpeg" alt="Food bowls">
+            </div>
+            <div class="grid-item">
+                <img src="IMG_3552.jpeg" alt="Supplements">
+            </div>
+            <div class="grid-item">
+                <img src="image5.jpg" alt="Together">
+            </div>
+            <div class="grid-item">
+                <img src="IMG_4216.jpeg" alt="Microgreens">
+            </div>
+            <div class="grid-item">
+                <img src="IMG_4130.jpeg" alt="Homesteading">
+            </div>
+            <div class="grid-item">
+                <img src="IMG_2676.jpeg" alt="Garden rows">
+            </div>
+            <div class="grid-item">
+                <img src="image4.jpeg" alt="Child with goat">
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="quote-container">
+            <div class="quote-image">
+                <img src="QJFN8523.jpeg" alt="Food preparation">
+            </div>
+            <div class="quote-text">
+                <p class="quote">Preserve and treat food as you would your body, remembering that in time it will be.</p>
+                <p class="quote-author">Benjamin Richardson</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Living Diet Section -->
+    <section class="living-diet-section" id="living-diet">
+        <div class="living-diet-parallax-bg"></div>
+        <div class="living-diet-container">
+            <h2 class="living-diet-title">A Living Diet</h2>
+            
+            <div class="living-diet-text">
+                <p>IS A WAY OF NOURISHING OURSELVES THAT OPTIMIZES FUNCTIONING AND PROMOTES VITALITY AND LONGEVITY INTO A GREAT AGE.</p>
+                
+                <p>IT IS A DIET THAT CONSIDERS HOW WE CONSUME, ASSIMILATE, AND DETOX DURING THE METABOLIC PROCESSING OF OUR FOOD AND HOW THAT CHANGES THROUGHOUT THE YEAR, MONTH AND DAY.</p>
+                
+                <p>IT IS A DIET THAT WE ONCE ATE FOR THE LONGEST TIME AND A DIET THAT SCIENCE IS CURRENTLY REDISCOVERING AS OPTIMAL.</p>
+                
+                <p>IT IS A DIET OF FINE DINNING AND IS AT THE CORE OF MANY TRADITIONAL CUISINES.</p>
+                
+                <p>IT IS A DIET THAT IS COMPRISED OF THE LARGEST VARIETY OF FRESH LIVING FOODS, FEAD BY A LIVING SOIL, WITHIN A LIVING SYSTEM.</p>
+                
+                <p>IT IS A WAY OF EATING THAT HONORS AND PROTECTS OUR EARTH, IS ALIGNED WITH IT'S CYCLES, WHICH DEEPENS OUR UNDERSTANDING AND CONNECTION WITH ALL.</p>
+                
+                <p>IT IS THE WAY OF NATURE.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Michael Pollan Quote Section -->
+    <section class="pollan-section">
+        <div class="pollan-parallax-bg"></div>
+        <div class="pollan-container">
+            <div class="pollan-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 500'%3E%3Crect fill='%23f5f5f0' width='600' height='500'/%3E%3C/svg%3E" alt="Still life">
+            </div>
+            <div class="pollan-text">
+                <p class="pollan-quote">Food. Not too much. Mostly plants.</p>
+                <p class="pollan-author">Michael Pollan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Symptoms Section -->
+    <section class="symptoms-section">
+        <div class="symptoms-text">
+            <p class="symptoms-title">
+                SYMPTOMS ARE OUR BODIES WAY OF COMMUNICATING WITH US SO THAT WE<br>
+                BETTER UNDERSTAND OURSELVES AND HEAL.
+            </p>
+            <p class="symptoms-subtitle">WE JUST HAVE TO LISTEN...</p>
+        </div>
+        
+        <h2 class="contact-title">YOUR HEALTH JOURNEY STARTS HERE</h2>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23d0d0d0' width='400' height='300'/%3E%3C/svg%3E" alt="Initial Contact">
+                </div>
+                <h3 class="service-title">Initial Contact</h3>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23d0d0d0' width='400' height='300'/%3E%3C/svg%3E" alt="Healthy Living Consultation">
+                </div>
+                <h3 class="service-title">Healthy Living<br>Consultation</h3>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23d0d0d0' width='400' height='300'/%3E%3C/svg%3E" alt="Ongoing Conversation">
+                </div>
+                <h3 class="service-title">Ongoing<br>Conversation</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <form class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Last Name *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="First Name *" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="email" placeholder="Email *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject *" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="MESSAGE *" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            
+            <div class="footer-info">
+                <div class="footer-section">
+                    <h3>Email</h3>
+                    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="147d7a727b547a75606166716764787577713a7775">[email&#160;protected]</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>For More Homesteading Information Go To</h3>
+                    <p>@The Craftsman's House</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%23d0d0d0' width='600' height='400'/%3E%3C/svg%3E" alt="Cooking">
+            </div>
+            <div class="footer-content">
+                <p class="footer-text">
+                    THE GREATER NUMBER OF US THAT CAN FORGE A HEALTHIER LIFESTYLE CAN ONLY BE BETTER FOR US, OUR EARTH, AND THE FUTURE. THROUGH CONSCIOUS, INTENTIONAL LIVING WE CAN REJOIN THE LIVING SYSTEMS ONCE AGAIN, REGAIN OUR BIRTHRIGHT, AND THRIVE AS WE ONCE DID FOR THE LONGEST TIME........LEAVING LITTLE, TO NO, FOOTPRINT ON THIS BEAUTIFUL EARTH.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Parallax effect
+        let ticking = false;
+        
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            
+            // Hero parallax
+            const heroBg = document.querySelector('.hero-background');
+            if (heroBg) {
+                heroBg.style.transform = `translateY(${scrolled * 0.25}px)`;
+            }
+            
+            // Welcome section parallax
+            const welcomeParallax = document.querySelector('.welcome-parallax-bg');
+            const welcomeSection = document.querySelector('.welcome-section');
+            if (welcomeParallax && welcomeSection) {
+                const rect = welcomeSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const offset = scrolled - welcomeSection.offsetTop;
+                    welcomeParallax.style.transform = `translateY(${offset * 0.3}px)`;
+                }
+            }
+            
+            // Living diet parallax
+            const livingDietParallax = document.querySelector('.living-diet-parallax-bg');
+            const livingDietSection = document.querySelector('.living-diet-section');
+            if (livingDietParallax && livingDietSection) {
+                const rect = livingDietSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const offset = scrolled - livingDietSection.offsetTop;
+                    livingDietParallax.style.transform = `translateY(${offset * 0.25}px)`;
+                }
+            }
+            
+            // Pollan section parallax
+            const pollanParallax = document.querySelector('.pollan-parallax-bg');
+            const pollanSection = document.querySelector('.pollan-section');
+            if (pollanParallax && pollanSection) {
+                const rect = pollanSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const offset = scrolled - pollanSection.offsetTop;
+                    pollanParallax.style.transform = `translateY(${offset * 0.2}px)`;
+                }
+            }
+            
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick, { passive: true });
+    </script>
+</body>
+</html>

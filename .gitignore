@@ -1,0 +1,14 @@
+# Backup files
+*backup*.html
+
+# Apple HEIC files (not web compatible)
+*.heic
+
+# PDFs (optional - remove these lines if you want PDFs on website)
+*.pdf
+
+# Wix screenshots (not needed)
+screencapture-*
+
+# Mac files
+.DS_Store
